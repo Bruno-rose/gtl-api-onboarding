@@ -6,16 +6,20 @@ interface ApiResponse {
 }
 
 export const api = {
-  async repositories(repoUrl: string, branch?: string): Promise<ApiResponse> {
+  async repositories(repoUrl: string, branch?: string, githubToken?: string): Promise<ApiResponse> {
     try {
       const response = await fetch(`${BASE_URL}/repositories`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${import.meta.env.VITE_GREPTILE_API_KEY}`,
-          'X-GitHub-Token': import.meta.env.VITE_GITHUB_TOKEN || '',
+          'X-GitHub-Token': githubToken || import.meta.env.VITE_GITHUB_TOKEN || '',
         },
-        body: JSON.stringify({ repoUrl, branch }),
+        body: JSON.stringify({
+          repository: repoUrl,
+          branch,
+          remote: repoUrl.includes("github.com") ? "github" : repoUrl.includes("gitlab.com") ? "gitlab" : "other",
+        }),
       });
       return { data: await response.json() };
     } catch (error) {

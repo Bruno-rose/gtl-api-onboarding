@@ -30,6 +30,13 @@ export const endpoints: EndpointInfo[] = [
         required: true,
       },
       {
+        name: "githubToken",
+        label: "GitHub Token",
+        type: "text",
+        placeholder: "ghp_xxxxxxxxxxxxxxxxxxxx",
+        required: false,
+      },
+      {
         name: "branch",
         label: "Branch",
         type: "text",
@@ -115,7 +122,11 @@ function MainPage() {
 
     switch (endpoint) {
       case "repositories":
-        response = await api.repositories(data.repoUrl, data.branch);
+        response = await api.repositories(
+          data.repoUrl,
+          data.branch,
+          data.githubToken
+        );
         break;
       case "query":
         response = await api.query(data.repoId, data.query);
