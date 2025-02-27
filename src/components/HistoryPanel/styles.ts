@@ -1,33 +1,33 @@
 export const styles = {
-  container: "border-t border-gray-200",
+  container: "border-t border-[#0d9373]/20 bg-[#0a0c0d]",
   header: {
-    wrapper: "flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50",
+    wrapper: "flex items-center justify-between p-6 cursor-pointer hover:bg-[#0a0c0d]/50 transition-colors",
     title: {
-      wrapper: "flex items-center",
-      text: "font-medium text-gray-800",
-      count: "ml-2 bg-gray-200 text-gray-700 text-xs font-medium px-2 py-0.5 rounded-full"
+      wrapper: "flex items-center space-x-3",
+      text: "text-xl font-bold text-white",
+      count: "bg-[#0d9373] text-white text-sm font-medium px-3 py-1 rounded-full"
     },
-    button: "text-gray-500 hover:text-gray-700",
-    icon: "w-5 h-5"
+    button: "text-white/60 hover:text-white transition-colors",
+    icon: "w-6 h-6"
   },
   content: {
-    wrapper: "max-h-64 overflow-y-auto",
-    empty: "p-6 text-center text-gray-500",
-    list: "divide-y divide-gray-200",
+    wrapper: "max-h-96 overflow-y-auto",
+    empty: "p-8 text-center text-white/60 text-lg",
+    list: "divide-y divide-[#0d9373]/20",
     item: {
-      wrapper: "p-4 hover:bg-gray-50 cursor-pointer",
+      wrapper: "p-6 hover:bg-[#0d9373]/10 cursor-pointer transition-colors",
       content: {
-        wrapper: "flex items-start",
-        iconWrapper: "mr-3 mt-0.5 bg-blue-100 p-1.5 rounded-full text-blue-600",
-        icon: "w-4 h-4",
+        wrapper: "flex items-start space-x-4",
+        iconWrapper: "flex-shrink-0 bg-[#0a0c0d] p-2 rounded-lg border border-[#0d9373]/20",
+        icon: "w-5 h-5 text-[#07c983]",
         main: {
           wrapper: "flex-1 min-w-0",
           header: {
-            wrapper: "flex items-center justify-between",
-            title: "text-sm font-medium text-gray-900 truncate capitalize",
-            time: "text-xs text-gray-500"
+            wrapper: "flex items-center justify-between mb-2",
+            title: "text-lg font-semibold text-white truncate capitalize",
+            time: "text-sm text-white/60"
           },
-          details: "mt-1 text-sm text-gray-600 truncate"
+          details: "text-sm text-white/80 line-clamp-2"
         }
       }
     }

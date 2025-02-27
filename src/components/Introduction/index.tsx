@@ -118,7 +118,9 @@ const Introduction = () => {
               The base URL for all API requests is:
             </p>
             <div className={styles.info.section.code}>
-              <code>https://api.greptile.com/v2/</code>
+              <p className="text-sm text-white/80">
+                https://api.greptile.com/v2
+              </p>
             </div>
           </div>
 
@@ -127,17 +129,17 @@ const Introduction = () => {
             <p className={styles.info.section.text}>Two tokens are required:</p>
             <ul className="space-y-3">
               <li className={styles.info.section.code}>
-                <p className="font-semibold">Greptile API key:</p>
-                <p className="text-sm text-gray-700">
-                  Include the API key in the request header:{" "}
-                  <code>Authorization: Bearer &lt;API_KEY&gt;</code>
+                <p className="text-sm text-white/80">Greptile API key:</p>
+                <p className="text-sm text-white/80">
+                  Include the API key in the request header: Authorization:
+                  Bearer &lt;API_KEY&gt;
                 </p>
               </li>
               <li className={styles.info.section.code}>
-                <p className="font-semibold">GitHub Token:</p>
-                <p className="text-sm text-gray-700">
+                <p className="text-sm text-white/80">GitHub Token:</p>
+                <p className="text-sm text-white/80">
                   Include this header with your GitHub/Gitlab access token:{" "}
-                  <code>X-GitHub-Token: &lt;GITHUB_TOKEN&gt;</code>
+                  X-GitHub-Token: &lt;GITHUB_TOKEN&gt;
                 </p>
               </li>
             </ul>

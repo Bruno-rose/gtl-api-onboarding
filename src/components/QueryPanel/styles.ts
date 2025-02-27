@@ -1,29 +1,29 @@
 export const styles = {
-  container: "bg-white rounded-lg shadow-md p-6 h-full",
+  container: "bg-[#0a0c0d] rounded-xl border border-[#0d9373]/20 p-8 h-full",
   header: {
-    wrapper: "flex items-center mb-4",
-    iconWrapper: "mr-3 bg-blue-100 p-2 rounded-full",
-    title: "text-xl font-semibold text-gray-800"
+    wrapper: "flex items-center mb-6",
+    iconWrapper: "mr-4 bg-[#0a0c0d] p-3 rounded-xl border border-[#0d9373]/20",
+    title: "text-2xl font-bold text-[#07c983]"
   },
-  description: "text-gray-600 mb-6",
+  description: "text-white/80 text-lg mb-8 leading-relaxed",
   form: {
-    wrapper: "space-y-4",
+    wrapper: "space-y-6",
     field: {
-      wrapper: "space-y-1",
+      wrapper: "space-y-2",
       label: {
-        wrapper: "block text-sm font-medium text-gray-700",
-        required: "text-red-500"
+        wrapper: "block text-sm font-semibold text-white/80",
+        required: "text-[#07c983] ml-1"
       },
       input: {
-        base: "w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500",
-        normal: "border-gray-300",
-        error: "border-red-500"
+        base: "w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0d9373] transition-all bg-[#0a0c0d]",
+        normal: "border-[#0d9373]/20 hover:border-[#0d9373]/40",
+        error: "border-red-500/50 bg-red-500/10"
       },
-      error: "text-red-500 text-sm"
+      error: "text-red-400 text-sm font-medium"
     },
     submit: {
-      wrapper: "pt-4",
-      button: "w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out"
+      wrapper: "pt-6",
+      button: "w-full bg-[#0d9373] hover:bg-[#07c983] text-white font-semibold py-3 px-6 rounded-xl transition-colors"
     }
   }
 }; 

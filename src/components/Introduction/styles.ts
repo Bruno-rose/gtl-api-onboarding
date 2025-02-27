@@ -1,44 +1,44 @@
 export const styles = {
-  container: "max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8",
+  container: "max-w-4xl mx-auto bg-[#0a0c0d] rounded-xl border border-[#0d9373]/20 p-8",
   header: {
-    wrapper: "text-center mb-8",
-    title: "text-3xl font-bold text-gray-900 mb-2",
-    subtitle: "text-xl text-gray-600"
+    wrapper: "text-center mb-12",
+    title: "text-4xl font-bold text-[#07c983] mb-3",
+    subtitle: "text-xl text-white/80"
   },
   content: {
-    wrapper: "mb-8",
-    text: "text-gray-700 mb-4",
+    wrapper: "mb-12 space-y-6",
+    text: "text-white/80 text-lg leading-relaxed",
     section: {
-      title: "text-xl font-semibold text-gray-800 mb-3",
-      list: "list-disc pl-6 mb-4 text-gray-700"
+      title: "text-2xl font-semibold text-white mb-4",
+      list: "list-disc pl-6 mb-6 text-white/80 space-y-3"
     }
   },
   operations: {
-    container: "border-t border-gray-200 pt-8",
-    title: "text-2xl font-bold text-gray-900 mb-6",
-    grid: "grid grid-cols-1 md:grid-cols-3 gap-6",
+    container: "border-t border-[#0d9373]/20 pt-12",
+    title: "text-3xl font-bold text-white mb-8 text-center",
+    grid: "grid grid-cols-1 md:grid-cols-3 gap-8",
     card: {
-      wrapper: "bg-blue-50 p-6 rounded-lg border border-blue-100",
+      wrapper: "bg-[#0a0c0d] p-6 rounded-xl border border-[#0d9373]/20 transition-all hover:border-[#0d9373]",
       header: {
         wrapper: "flex items-center mb-4",
-        number: "bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3",
-        title: "text-lg font-semibold text-gray-800"
+        number: "bg-[#0d9373] text-white rounded-full w-10 h-10 flex items-center justify-center mr-3 text-lg font-bold",
+        title: "text-xl font-bold text-white"
       },
       content: {
-        wrapper: "flex items-start mb-3",
-        icon: "w-5 h-5 text-blue-600 mt-1 mr-2 flex-shrink-0",
-        text: "text-gray-700",
-        code: "bg-gray-100 px-1 py-0.5 rounded"
+        wrapper: "flex items-start space-x-3",
+        icon: "w-6 h-6 text-[#07c983]",
+        text: "text-white/80 leading-relaxed",
+        code: "bg-[#0a0c0d] px-2 py-1 rounded-md font-mono text-sm text-[#07c983] border border-[#0d9373]/20"
       }
     }
   },
   info: {
-    container: "border-t border-gray-200 pt-8 mt-8",
-    grid: "grid grid-cols-1 md:grid-cols-2 gap-8",
+    container: "border-t border-[#0d9373]/20 pt-12 mt-12",
+    grid: "grid grid-cols-1 md:grid-cols-2 gap-12",
     section: {
-      title: "text-xl font-semibold text-gray-800 mb-3",
-      text: "text-gray-700 mb-2",
-      code: "bg-gray-100 p-3 rounded-md"
+      title: "text-2xl font-semibold text-white mb-4",
+      text: "text-white/80 mb-3",
+      code: "bg-[#0a0c0d] p-4 rounded-xl font-mono text-sm border border-[#0d9373]/20"
     }
   }
 }; 
