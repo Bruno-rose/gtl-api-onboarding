@@ -7,10 +7,7 @@ export const styles = {
   },
   empty: {
     wrapper: "flex flex-col items-center justify-center h-[calc(100%-4rem)] text-center text-gray-500",
-    icon: {
-      wrapper: "w-16 h-16 mb-4 text-gray-300",
-      path: "stroke-linecap-round stroke-linejoin-round stroke-width-1.5"
-    },
+    icon: "w-16 h-16 mb-4 text-gray-300",
     title: "text-lg font-medium",
     description: "mt-1"
   }

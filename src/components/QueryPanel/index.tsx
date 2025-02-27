@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { EndpointInfo } from "../App";
+import { EndpointInfo } from "../../App";
+import { styles } from "./styles";
 
 interface QueryPanelProps {
   endpoint: EndpointInfo;
@@ -60,25 +61,25 @@ const QueryPanel: React.FC<QueryPanelProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 h-full">
-      <div className="flex items-center mb-4">
-        <div className="mr-3 bg-blue-100 p-2 rounded-full">{endpoint.icon}</div>
-        <h2 className="text-xl font-semibold text-gray-800">
-          {endpoint.title}
-        </h2>
+    <div className={styles.container}>
+      <div className={styles.header.wrapper}>
+        <div className={styles.header.iconWrapper}>{endpoint.icon}</div>
+        <h2 className={styles.header.title}>{endpoint.title}</h2>
       </div>
 
-      <p className="text-gray-600 mb-6">{endpoint.description}</p>
+      <p className={styles.description}>{endpoint.description}</p>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className={styles.form.wrapper}>
         {endpoint.fields.map((field) => (
-          <div key={field.name} className="space-y-1">
+          <div key={field.name} className={styles.form.field.wrapper}>
             <label
               htmlFor={field.name}
-              className="block text-sm font-medium text-gray-700"
+              className={styles.form.field.label.wrapper}
             >
               {field.label}{" "}
-              {field.required && <span className="text-red-500">*</span>}
+              {field.required && (
+                <span className={styles.form.field.label.required}>*</span>
+              )}
             </label>
 
             {field.type === "textarea" ? (
@@ -89,8 +90,10 @@ const QueryPanel: React.FC<QueryPanelProps> = ({
                 onChange={handleChange}
                 placeholder={field.placeholder}
                 rows={4}
-                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors[field.name] ? "border-red-500" : "border-gray-300"
+                className={`${styles.form.field.input.base} ${
+                  errors[field.name]
+                    ? styles.form.field.input.error
+                    : styles.form.field.input.normal
                 }`}
               />
             ) : (
@@ -101,23 +104,22 @@ const QueryPanel: React.FC<QueryPanelProps> = ({
                 value={formData[field.name] || ""}
                 onChange={handleChange}
                 placeholder={field.placeholder}
-                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors[field.name] ? "border-red-500" : "border-gray-300"
+                className={`${styles.form.field.input.base} ${
+                  errors[field.name]
+                    ? styles.form.field.input.error
+                    : styles.form.field.input.normal
                 }`}
               />
             )}
 
             {errors[field.name] && (
-              <p className="text-red-500 text-sm">{errors[field.name]}</p>
+              <p className={styles.form.field.error}>{errors[field.name]}</p>
             )}
           </div>
         ))}
 
-        <div className="pt-4">
-          <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out"
-          >
+        <div className={styles.form.submit.wrapper}>
+          <button type="submit" className={styles.form.submit.button}>
             Submit
           </button>
         </div>
