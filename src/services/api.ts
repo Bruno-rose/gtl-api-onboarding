@@ -11,14 +11,14 @@ export const api = {
       const response = await fetch(`${BASE_URL}/repositories`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           'Authorization': `Bearer ${import.meta.env.VITE_GREPTILE_API_KEY}`,
           'X-GitHub-Token': githubToken || import.meta.env.VITE_GITHUB_TOKEN || '',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          repository: repoUrl,
-          branch,
           remote: repoUrl.includes("github.com") ? "github" : repoUrl.includes("gitlab.com") ? "gitlab" : "other",
+          repository: repoUrl.split('/').slice(-2).join('/'),
+          branch: branch || 'main'
         }),
       });
       return { data: await response.json() };
