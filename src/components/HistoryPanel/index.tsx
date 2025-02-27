@@ -25,6 +25,17 @@ const HistoryPanel: React.FC<HistoryPanelProps> = ({
     }
   };
 
+  const formatResponse = (response: string) => {
+    try {
+      if (response.startsWith("{") || response.startsWith("[")) {
+        return JSON.stringify(JSON.parse(response), null, 2);
+      }
+      return response;
+    } catch {
+      return response;
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div
@@ -81,9 +92,9 @@ const HistoryPanel: React.FC<HistoryPanelProps> = ({
                           {item.timestamp.toLocaleString()}
                         </span>
                       </div>
-                      <p className={styles.content.item.content.main.details}>
-                        {item.response}
-                      </p>
+                      <pre className={styles.content.item.content.main.details}>
+                        {formatResponse(item.response)}
+                      </pre>
                     </div>
                   </div>
                 </div>

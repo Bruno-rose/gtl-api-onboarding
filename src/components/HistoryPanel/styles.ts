@@ -27,7 +27,7 @@ export const styles = {
             title: "text-lg font-semibold text-white truncate capitalize",
             time: "text-sm text-white/60"
           },
-          details: "text-sm text-white/80 line-clamp-2"
+          details: "text-sm text-white/80 font-mono whitespace-pre-wrap overflow-x-auto max-h-32 rounded-lg bg-[#0a0c0d]/50 p-2"
         }
       }
     }
