@@ -6,13 +6,19 @@ interface ResponsePanelProps {
 }
 
 const ResponsePanel: React.FC<ResponsePanelProps> = ({ response }) => {
+  const formattedResponse = response
+    ? response.startsWith("{") || response.startsWith("[")
+      ? JSON.stringify(JSON.parse(response), null, 2)
+      : response
+    : "";
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Response</h2>
 
       {response ? (
         <div className={styles.response.wrapper}>
-          <pre className={styles.response.content}>{response}</pre>
+          <pre className={styles.response.content}>{formattedResponse}</pre>
         </div>
       ) : (
         <div className={styles.empty.wrapper}>

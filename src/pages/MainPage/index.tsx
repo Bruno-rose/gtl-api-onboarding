@@ -13,6 +13,7 @@ import HistoryPanel from "../../components/HistoryPanel";
 import CompletionPage from "../../components/CompletionPage";
 import { Endpoint, EndpointInfo, HistoryItem } from "../../types";
 import { styles } from "./styles";
+import { api } from "../../services/api";
 
 export const endpoints: EndpointInfo[] = [
   {
@@ -106,21 +107,37 @@ function MainPage() {
     }
   };
 
-  const handleSubmit = (endpoint: Endpoint, data: Record<string, string>) => {
-    // Simulate API call
-    const mockResponse = `Mock response for ${endpoint} endpoint with data: ${JSON.stringify(
-      data
-    )}`;
+  const handleSubmit = async (
+    endpoint: Endpoint,
+    data: Record<string, string>
+  ) => {
+    let response;
+
+    switch (endpoint) {
+      case "repositories":
+        response = await api.repositories(data.repoUrl, data.branch);
+        break;
+      case "query":
+        response = await api.query(data.repoId, data.query);
+        break;
+      case "search":
+        response = await api.search(data.repoId, data.searchTerm);
+        break;
+    }
+
+    const responseText = response.error
+      ? `Error: ${response.error}`
+      : JSON.stringify(response.data, null, 2);
 
     // Update current response
-    setCurrentResponse(mockResponse);
+    setCurrentResponse(responseText);
 
     // Add to history
     const historyItem: HistoryItem = {
       id: Date.now().toString(),
       endpoint,
       request: data,
-      response: mockResponse,
+      response: responseText,
       timestamp: new Date(),
     };
 
