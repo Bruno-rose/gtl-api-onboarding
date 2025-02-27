@@ -15,7 +15,7 @@ export const styles = {
         required: "text-[#07c983] ml-1"
       },
       input: {
-        base: "w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0d9373] transition-all bg-[#0a0c0d]",
+        base: "w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0d9373] transition-all bg-[#0a0c0d] text-white",
         normal: "border-[#0d9373]/20 hover:border-[#0d9373]/40",
         error: "border-red-500/50 bg-red-500/10"
       },
