@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { EndpointInfo } from "../../App";
+import { EndpointInfo } from "../../types";
 import { styles } from "./styles";
 
 interface QueryPanelProps {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp, Database, Code, Search } from "lucide-react";
-import { HistoryItem, Endpoint } from "../../App";
+import { HistoryItem, Endpoint } from "../../types";
 import { styles } from "./styles";
 
 interface HistoryPanelProps {
@@ -78,11 +78,11 @@ const HistoryPanel: React.FC<HistoryPanelProps> = ({
                             styles.content.item.content.main.header.time
                           }
                         >
-                          {item.timestamp}
+                          {item.timestamp.toLocaleString()}
                         </span>
                       </div>
                       <p className={styles.content.item.content.main.details}>
-                        {item.details}
+                        {item.response}
                       </p>
                     </div>
                   </div>
