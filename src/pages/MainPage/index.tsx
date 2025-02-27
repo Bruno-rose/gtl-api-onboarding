@@ -12,6 +12,7 @@ import ResponsePanel from "../../components/ResponsePanel";
 import HistoryPanel from "../../components/HistoryPanel";
 import CompletionPage from "../../components/CompletionPage";
 import { Endpoint, EndpointInfo, HistoryItem } from "../../types";
+import { styles } from "./styles";
 
 export const endpoints: EndpointInfo[] = [
   {
@@ -143,7 +144,7 @@ function MainPage() {
       return <CompletionPage historyCount={history.length} />;
     } else {
       return (
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className={styles.gridLayout}>
           <QueryPanel
             endpoint={endpoints[currentStep - 1]}
             initialValues={currentRequest}
@@ -158,24 +159,18 @@ function MainPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className={styles.container}>
       {/* Main content */}
-      <div className="flex-grow flex flex-col p-6">
+      <div className={styles.mainContent}>
         {/* Content area */}
-        <div className="flex-grow flex flex-col items-center justify-center max-w-6xl mx-auto w-full">
-          {renderContent()}
-        </div>
+        <div className={styles.contentArea}>{renderContent()}</div>
 
         {/* Navigation buttons */}
-        <div className="flex justify-between mt-8 max-w-6xl mx-auto w-full">
+        <div className={styles.navigation}>
           <button
             onClick={handleBack}
             disabled={currentStep === 0}
-            className={`px-4 py-2 rounded-md flex items-center ${
-              currentStep === 0
-                ? "text-gray-400 cursor-not-allowed"
-                : "bg-gray-200 hover:bg-gray-300 text-gray-800"
-            }`}
+            className={styles.backButton(currentStep === 0)}
           >
             <ChevronLeft className="w-5 h-5 mr-2" />
             Back
@@ -184,11 +179,7 @@ function MainPage() {
           <button
             onClick={handleNext}
             disabled={currentStep === totalSteps - 1}
-            className={`px-4 py-2 rounded-md flex items-center ${
-              currentStep === totalSteps - 1
-                ? "text-gray-400 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700 text-white"
-            }`}
+            className={styles.nextButton(currentStep === totalSteps - 1)}
           >
             Next
             <ChevronRight className="w-5 h-5 ml-2" />
@@ -197,8 +188,8 @@ function MainPage() {
       </div>
 
       {/* History panel */}
-      <div className="border-t border-gray-200 bg-white">
-        <div className="max-w-6xl mx-auto w-full">
+      <div className={styles.historyContainer}>
+        <div className={styles.historyWrapper}>
           <HistoryPanel
             history={history}
             onItemClick={handleHistoryItemClick}
