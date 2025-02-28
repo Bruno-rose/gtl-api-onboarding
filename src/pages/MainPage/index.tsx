@@ -65,6 +65,13 @@ export const endpoints: EndpointInfo[] = [
         placeholder: "How does authentication work in this codebase?",
         required: true,
       },
+      {
+        name: "githubToken",
+        label: "GitHub Token",
+        type: "text",
+        placeholder: "ghp_xxxxxxxxxxxxxxxxxxxx",
+        required: false,
+      },
     ],
   },
   {
@@ -122,7 +129,7 @@ function MainPage() {
         );
         break;
       case "query":
-        response = await api.query(data.repoId, data.query);
+        response = await api.query(data.repoId, data.query, data.githubToken);
         break;
       case "search":
         response = await api.search(data.repoId);

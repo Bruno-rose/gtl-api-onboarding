@@ -29,6 +29,7 @@ export const api = {
 
   async query(repoId: string, query: string, githubToken?: string): Promise<ApiResponse> {
     try {
+      console.log(repoId, query, githubToken);
       const response = await fetch(`${BASE_URL}/query`, {
         method: 'POST',
         headers: {
@@ -36,7 +37,18 @@ export const api = {
           'Authorization': `Bearer ${import.meta.env.VITE_GREPTILE_API_KEY}`,
           'X-GitHub-Token': githubToken || import.meta.env.VITE_GITHUB_TOKEN || '',
         },
-        body: JSON.stringify({ repositories: [repoId], query }),
+        body: JSON.stringify({
+          messages: [{
+            id: "123123123",
+            content: query,
+            role: "user"
+          }],
+          repositories: [{
+            remote: repoId.split(':')[0],
+            branch: repoId.split(':')[1], 
+            repository: repoId.split(':')[2]
+          }]
+        }),
       });
       return { data: await response.json() };
     } catch (error) {
