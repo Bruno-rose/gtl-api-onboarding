@@ -27,16 +27,16 @@ export const api = {
     }
   },
 
-  async query(repoId: string, query: string): Promise<ApiResponse> {
+  async query(repoId: string, query: string, githubToken?: string): Promise<ApiResponse> {
     try {
       const response = await fetch(`${BASE_URL}/query`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${import.meta.env.VITE_GREPTILE_API_KEY}`,
-          'X-GitHub-Token': import.meta.env.VITE_GITHUB_TOKEN || '',
+          'X-GitHub-Token': githubToken || import.meta.env.VITE_GITHUB_TOKEN || '',
         },
-        body: JSON.stringify({ repoId, query }),
+        body: JSON.stringify({ repositories: [repoId], query }),
       });
       return { data: await response.json() };
     } catch (error) {
@@ -44,16 +44,14 @@ export const api = {
     }
   },
 
-  async search(repoId: string, searchTerm: string): Promise<ApiResponse> {
+  async search(repoId: string): Promise<ApiResponse> {
     try {
-      const response = await fetch(`${BASE_URL}/search`, {
-        method: 'POST',
+      const encodedRepoId = encodeURIComponent(repoId);
+      const response = await fetch(`${BASE_URL}/repositories/${encodedRepoId}`, {
+        method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_GREPTILE_API_KEY}`,
-          'X-GitHub-Token': import.meta.env.VITE_GITHUB_TOKEN || '',
-        },
-        body: JSON.stringify({ repoId, searchTerm }),
+          Authorization: `Bearer ${import.meta.env.VITE_GREPTILE_API_KEY}`
+        }
       });
       return { data: await response.json() };
     } catch (error) {

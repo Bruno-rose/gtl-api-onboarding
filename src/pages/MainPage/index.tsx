@@ -55,7 +55,7 @@ export const endpoints: EndpointInfo[] = [
         name: "repoId",
         label: "Repository ID",
         type: "text",
-        placeholder: "repo_12345",
+        placeholder: "github:main:username/repo",
         required: true,
       },
       {
@@ -78,14 +78,7 @@ export const endpoints: EndpointInfo[] = [
         name: "repoId",
         label: "Repository ID",
         type: "text",
-        placeholder: "repo_12345",
-        required: true,
-      },
-      {
-        name: "searchTerm",
-        label: "Search Term",
-        type: "textarea",
-        placeholder: "Find all files related to user authentication",
+        placeholder: "github:main:username/repo",
         required: true,
       },
     ],
@@ -132,7 +125,7 @@ function MainPage() {
         response = await api.query(data.repoId, data.query);
         break;
       case "search":
-        response = await api.search(data.repoId, data.searchTerm);
+        response = await api.search(data.repoId);
         break;
     }
 
